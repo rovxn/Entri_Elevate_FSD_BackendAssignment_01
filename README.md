@@ -1,71 +1,160 @@
-# Simple Inventory Management System Backend
+# Inventory Management System (Backend)
 
-This project implements a basic backend for an inventory system using ExpressJS and Mongoose with MongoDB.
+A simple **Inventory Management System API** built using **Node.js**, **Express.js**, and **file-based JSON storage**. This project is organized into **models**, **routes**, and **middlewares** to follow clean code structure.
 
+---
 
-## 🚀 Setup and Installation
+## 📌 Features
 
-Follow these steps to set up and run the project locally.
+* Get all products
+* Get a product by ID
+* Add a new product
+* Delete a product
+* Update product description
+* JSON file used as the storage system (`products.json`)
+* Modular structure with models, routes, and middlewares
 
-### Prerequisites
-* Node.js and npm installed.
-* A running instance of MongoDB (Atlas or Compass).
+---
 
-### Steps
-1.  **Clone the Repository:**
-    ```bash
-    git clone <YOUR_REPO_URL>
-    cd inventory-api
-    ```
+## 📁 Project Structure
 
-2.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
+```
+inventory-backend/
+│
+├── data/
+│   └── products.json
+│
+├── models/
+│   └── productModel.js
+│
+├── routes/
+│   └── productRoutes.js
+│
+├── middlewares/
+│   ├── logger.js
+│   └── errorHandler.js
+│
+├── server.js
+└── package.json
+```
 
-3.  **Configure Environment Variables:**
-    Create a file named `.env` in the root directory and add your MongoDB connection string and port:
-    ```
-    MONGO_URI="YOUR_MONGODB_CONNECTION_STRING" 
-    PORT=3000
-    ```
+---
 
-4.  **Run the Server:**
-    ```bash
-    node server.js
-    # Server should be running on http://localhost:3000
-    ```
+## 🚀 Installation & Setup
 
-## 📝 Item Schema
+### 1. Clone the repository
 
-The Mongoose model for the `Item` collection uses the following schema:
+```
+git clone <your-repo-url>
+cd inventory-backend
+```
 
-| Field | Type | Description |
-| :--- | :--- | :--- |
-| `name` | String | Name of the inventory item. |
-| `quantity` | Number | Current stock level. |
-| `price` | Number | Unit price of the item. |
+### 2. Install dependencies
 
-## 🔗 API Endpoints
+```
+npm install
+```
 
-The following APIs are implemented in this backend:
+### 3. Start the server
 
-| Method | Route | Description | Details |
-| :--- | :--- | :--- | :--- |
-| **GET** | `/` | Checks if the API is running. | Returns: `"Inventory API is Running"`. |
-| **GET** | `/health` | Returns the server's status. | Returns: JSON status (e.g., database connection status, uptime). |
-| **POST** | `/items` | **Adds a new item** to the inventory. | Requires JSON body with `name`, `quantity`, and `price`. |
-| **GET** | `/items` | **Lists all items** in the inventory. | Returns: JSON array of all Item documents. |
-| **ALL** | `* (404)` | **Error Handler**. | Returns: JSON message `{ error: "Not Found", ... }` for non-existent routes. |
+```
+npm start
+```
 
-## ⚙️ Middleware Used
+Or if using nodemon:
 
-The following middleware is used in the application:
-1.  **Request Logger**: Logs the request method and URL for every incoming request.
-2.  **404 Handler**: Catches all requests that did not match any defined routes and returns a 404 JSON error message.
+```
+npm run dev
+```
 
-## ✅ Postman Testing
+### 4. Server Runs At:
 
-All routes, including basic GET requests, the POST route for adding data, and the 404 error handler, have been successfully tested using Postman.
+```
+http://localhost:3000
+```
 
-*The Postman Collection export is included in this repository/folder for validation.*
+---
+
+## 🛠 API Endpoints
+
+### ✔ **GET** — Get all products
+
+```
+GET /api/products
+```
+
+### ✔ **GET** — Get product by ID
+
+```
+GET /api/products/:id
+```
+
+### ✔ **POST** — Add new product
+
+```
+POST /api/products
+```
+
+**Body (JSON):**
+
+```json
+{
+  "productId": 11,
+  "productName": "Pizza",
+  "description": "Cheesy",
+  "Stock": true
+}
+```
+
+### ✔ **DELETE** — Delete a product by ID
+
+```
+DELETE /api/products/:id
+```
+
+### ✔ **PUT** — Update product description
+
+```
+PUT /api/products/:id/description
+```
+
+**Body:**
+
+```json
+{
+  "description": "Updated description here"
+}
+```
+
+---
+
+## 📄 JSON Data File
+
+Your product list is stored inside:
+
+```
+data/products.json
+```
+
+You must create at least **10 products**, per assignment requirement.
+
+---
+
+## 🧩 Middlewares
+
+### 🔹 logger.js
+
+Logs method, URL, and timestamp.
+
+### 🔹 errorHandler.js
+
+Handles errors globally and returns proper JSON responses.
+
+---
+
+## 📌 Notes
+
+* This project uses **file-based storage**, suitable for small assignments.
+* For production-level apps, consider replacing JSON file with a real database (MongoDB, PostgreSQL, etc.).
+
+---

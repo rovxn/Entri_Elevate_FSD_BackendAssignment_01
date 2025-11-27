@@ -1,19 +1,28 @@
 {
   "name": "entri_elevate_fsd_backendassignment_01",
   "version": "1.0.0",
-  "description": "This project is Assignment 12 for the Entri Elevate Full Stack Development Module[cite: 2, 4]. It implements a basic backend for an inventory system using ExpressJS and Mongoose with MongoDB[cite: 7].",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rovxn/Entri_Elevate_FSD_BackendAssignment_01.git"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rovxn/Entri_Elevate_FSD_BackendAssignment_01/issues"
+  },
+  "homepage": "https://github.com/rovxn/Entri_Elevate_FSD_BackendAssignment_01#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "mongoose": "^9.0.0"
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
   }
 }
